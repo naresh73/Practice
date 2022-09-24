@@ -1,23 +1,54 @@
-import logo from './logo.svg';
+import { useEffect, useState  } from 'react'
 import './App.css';
 
 function App() {
+  
+  const [val, setVal] = useState(0);
+  const [isclicked, setIsclicked] = useState(false);
+
+  useEffect(() => {
+    console.log("componentDidMount");
+}, [])
+
+
+
+useEffect(()=>{
+  console.log("componentDidUpdate")
+  return (
+    () => {
+     console.log("component will unmount")
+    }  
+   )
+},[isclicked,val])
+function handleInc() {
+  setVal(val + 1)
+}
+
+function handleDec() {
+  setVal(val - 1)
+}
+
+function handleReset() {
+  setVal(0)
+}
+
+function handleResetButton() {
+  setIsclicked(true)
+}
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{val}</h1>
+      <button onClick={handleInc}>INC</button>
+      <button onClick={handleDec}>DEC</button>
+      {
+        !isclicked ? 
+      <button onClick={handleReset}>RESET</button> : 
+      null
+    }
+      <button onClick={handleResetButton}>Delete RESET</button>
+
     </div>
   );
 }
