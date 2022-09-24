@@ -11,7 +11,6 @@ function App() {
       {/* <UserProps name="Naresh" /> */}
       {/* <UserInput /> */}
       <UserForm />
-
     </div>
   );
 }
