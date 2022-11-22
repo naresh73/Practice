@@ -7,16 +7,18 @@ function App({
 }) {
 
   return (
-    <div><center>
-      <h1>
-        {states.username}
-      </h1>
-      <h2>
-        {states.email}
-      </h2>
+    <div className='container'><center>
       <h3>
-        {states.counter}
+        {/* {states.username} */}
+        fgg
       </h3>
+      <h3>
+        {/* {states.email} */}
+        gg
+      </h3>
+      <h1>
+        {states.counter}
+      </h1>
       <div><button onClick={action.increseFunction}>+</button></div>
       <div><button onClick={action.decreseFunction}>-</button></div>
       <br/>
@@ -30,9 +32,9 @@ function App({
 const mapStateToProps = (state) => {
   return {
     states: {
-      counter: state.counter,
-      username: state.username,
-      email: state.email
+      counter: state.counter
+      // username: state.username,
+      // email: state.email
     }
   };
 };

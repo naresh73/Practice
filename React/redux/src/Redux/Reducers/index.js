@@ -6,9 +6,6 @@ const initialState = {
     email: "nareshsharma0318@gmail.com"
 };
 
-
-
-
 export const reducers = (state = initialState, action) => {
     switch (action.type) {
         case counterTypes.increment:
