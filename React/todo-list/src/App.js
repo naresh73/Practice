@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem, clearList, deleteItem } from './actions';
 
 export default function App() {
-
   const [item, setItem] = useState("")
+  
+  // useEffect(() => {
+  //   console.log(new Date().getTime());
+  // })
 
   function handleChange(e) {
     setItem(e.target.value)
@@ -35,7 +38,7 @@ export default function App() {
               todoList.map((elem) => {
                 return (
                   <div key={elem.id} className='todos' >
-                    <li>{elem.data}
+                    <li>{elem.item}
                       <button onClick={() => dispatch(deleteItem(elem.id))}>DELETE</button>
                     </li>
                   </div>

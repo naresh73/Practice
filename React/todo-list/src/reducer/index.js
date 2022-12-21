@@ -5,20 +5,21 @@ const initalState = {
 export const todolistReducer = (state = initalState, action) => {
     switch (action.type) {
         case "ADD":
-            const { id, data } = action.payload;
+            // const { id, data } = action.payload;
             return {
                 ...state,
                 list: [
                     ...state.list,
                     {
-                        id: id,
-                        data: data
+                        id: action.payload.id,
+                        item: action.payload.data
                     }
                 ]
             }
 
         case "DELETE":
             const newList = state.list.filter((elem) => elem.id !== action.id)
+            
             return {
                 ...state,
                 list : newList
