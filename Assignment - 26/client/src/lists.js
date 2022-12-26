@@ -8,7 +8,7 @@ export default function Lists() {
 
     const [item, setItem] = useState([])
 
-    const todoListItem = useSelector((state) => state.todolistReducer.list);
+    // const todoListItem = useSelector((state) => state.todolistReducer.list);
     const dispatch = useDispatch();
 
     async function getAllItems() {
@@ -32,9 +32,9 @@ export default function Lists() {
                     <button onClick={getAllItems}>Check List</button>
                     <h3>YOUR ITEM'S</h3>
                     {
-                        item.map((elem) => {
+                        item.map((elem,index) => {
                             return (
-                                <div key={elem.id} className='todos' >
+                                <div key={index} className='todos' >
                                     <li>{elem.item}
                                         {/* <button onClick={() => dispatch(deleteItem(elem.id))}>DELETE</button> */}
                                     </li>

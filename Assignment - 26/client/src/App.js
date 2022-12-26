@@ -49,7 +49,6 @@ export default function App() {
                     <button onClick={() => dispatch(deleteItem(elem.id))}>DELETE</button>
                   </li>
                 </div>
-
               )
             })
           }
@@ -57,6 +56,9 @@ export default function App() {
 
         {/* <button onClick={() => dispatch(clearList())}>CLEAR LIST</button> */}
       </center>
+      <div>
+        <br />
+      </div>
       <Lists />
     </div>
   )
