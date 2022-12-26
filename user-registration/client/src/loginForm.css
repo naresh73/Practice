@@ -167,7 +167,7 @@ img {
   font-weight: 500;
   line-height: inherit;
   cursor: pointer;
-  min-width: 40%;
+  /* min-width: 40%; */
   height: auto;
   padding: 0.65rem 1.25rem;
   border: none;
