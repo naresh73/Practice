@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { addItem, clearList, deleteItem } from './actions';
+// import { addItem, clearList, deleteItem } from './actions';
 import axios from 'axios';
 
 export default function Lists() {
 
-    const [item, setItem] = useState([])
+    const [list, setList] = useState([])
 
     // const todoListItem = useSelector((state) => state.todolistReducer.list);
     const dispatch = useDispatch();
@@ -14,16 +14,27 @@ export default function Lists() {
     async function getAllItems() {
         const res = await axios.get("http://localhost:8000/get")
         const todoList = res.data.item
-        setItem(
+        setList(
             todoList
         )
-
-        dispatch(addItem(item))
-
-            
-        
+        // dispatch(addItem(item))
     }
     // console.log(todoListItem);
+
+    const removeItem = async (id) => {
+        await axios.delete("http://localhost:8000/remove/"+id)
+        try {
+            const newList = list.filter((key) => key._id !== id)
+            setList(newList)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function clearList() {
+        await axios.delete("http://localhost:8000/clear")
+        getAllItems()
+    }
 
     return (
         <div className='container'>
@@ -32,11 +43,11 @@ export default function Lists() {
                     <button onClick={getAllItems}>Check List</button>
                     <h3>YOUR ITEM'S</h3>
                     {
-                        item.map((elem,index) => {
+                        list.map((elem) => {
                             return (
-                                <div key={index} className='todos' >
+                                <div key={elem._id} className='todos' >
                                     <li>{elem.item}
-                                        {/* <button onClick={() => dispatch(deleteItem(elem.id))}>DELETE</button> */}
+                                        <button onClick={() => removeItem(elem._id)}>DELETE</button>
                                     </li>
                                 </div>
 
@@ -45,7 +56,7 @@ export default function Lists() {
                     }
                 </div>
 
-                {/* <button onClick={() => dispatch(clearList())}>CLEAR LIST</button> */}
+                <button onClick={clearList}>CLEAR LIST</button>
             </center>
         </div>
 

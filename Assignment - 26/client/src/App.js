@@ -17,7 +17,7 @@ export default function App() {
   async function addItemIntoTodo() {  
     await axios.post("http://localhost:8000/add", {item})
     .then((res) => {
-      alert(res.data.message)
+      // alert(res.data.message)
       setItem('')
     })
   }
