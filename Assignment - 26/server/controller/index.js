@@ -42,4 +42,30 @@ async function getItems (req, res) {
     } 
 }
 
-module.exports = {createItem, getItems};
+async function removeItem(req, res) {
+    try {
+        await todosModel.findByIdAndDelete(req.params.id)
+        res.send({
+            messgae: "Item is deleted"
+        })
+    } catch (error) {
+        res.send({
+            Error: error
+        })
+    }
+}
+
+async function clearList(req, res) {
+    try {
+        await todosModel.deleteMany({})
+        res.send({
+            messgae: "List is cleared"
+        })
+    } catch (error) {
+        res.send({
+            Error: error
+        })
+    }
+}
+
+module.exports = {createItem, getItems, removeItem, clearList};

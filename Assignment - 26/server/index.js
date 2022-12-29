@@ -12,4 +12,6 @@ App.use(cors())
 
 App.post("/add",todo.createItem);
 App.get("/get",todo.getItems);
+App.delete("/remove/:id",todo.removeItem);
+App.delete("/clear",todo.clearList);
 App.listen(PORT, console.log("server is listening on PORT",PORT))
